@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "./components.css";
 import user from "./user.svg";
 import image1 from './barbell.svg'
+import image2 from './pattern.webp'
 // import image2 from './nutrition-icon.svg'
 // import background from './background.png'
 function Home() {
@@ -12,12 +14,12 @@ const [scrollY, setScrollY] = useState(0);
 
 // State to store the position of each image
 const [image1Y, setImage1Y] = useState(0);
-// const [image2Y, setImage2Y] = useState(0);
+const [image2Y, setImage2Y] = useState(0);
 
 // Function to update the position of each image
 const updatePosition = () => {
     setImage1Y(scrollY * 0.4);
-    // setImage2Y(scrollY * 0.65);
+    setImage2Y(scrollY * 0.1);
 }
 
 // Use the useEffect hook to listen for changes in the scroll position
@@ -40,10 +42,9 @@ useEffect(() => {
 
 
   return (
-    <div>
+    <div className='home-body'>
       <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Raleway:wght@300&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
       </style>
       <div className="navbar">
         <div className="navbar-top-left">
@@ -51,12 +52,14 @@ useEffect(() => {
           <p className="paragraph username">username</p>
         </div>
         <div className="navbar-top-right">
+          <Link  style={{textDecoration:'none'}} to='/Calculator' >
           <p className="paragraph">CALCULATE</p>
+          </Link>
         </div>
       </div>
       <div className="body-content">
         {/* <img className='background-image' src={background} alt="bg" /> */}
-        <h1 className="title">Balance-BOX</h1>
+        <h1 className="title">BALANCE-BOX</h1>
         <p className="description">
           Balance Box is a comprehensive nutrition app designed to help users
           achieve their health and fitness goals. Whether you're looking to lose
@@ -94,8 +97,14 @@ useEffect(() => {
       </div>
       <div>
             <img className='image1' src={image1} style={{ transform: `translateY(${image1Y}px)` }} alt='1'/>
-            {/* <img className='image2' src={image2} style={{ transform: `translateY(${image2Y}px)` }} alt='2'/> */}
+            <img className='image2' src={image2} style={{ transform: `translateY(${image2Y}px)` }} alt='2'/>
         </div>
+      <div className='footer'>
+          <div className='whiteline'>h</div>
+          <p className='paragraph made-by'>Made With <span>&#x2764;</span>  By Chirag Chavda</p>
+          <div className='whiteline-right'>a</div>
+      </div>
+      
     </div>
   );
 }
